@@ -22,3 +22,22 @@ def median(a):
     return np.median(a)
 def std_dev(a):
     return np.std(a)
+def variance(a):
+    return np.var(a)
+def factorial(n):
+    return np.math.factorial(n)
+def gcd(a, b):
+    return np.gcd(a, b)
+def lcm(a, b):
+    return abs(a * b) // np.gcd(a, b)
+def sin(a):
+    return np.sin(a)
+def cos(a):
+    return np.cos(a)
+def tan(a):
+    return np.tan(a)
+def radians(degrees):
+    return np.radians(degrees)
+def degrees(radians):
+    return np.degrees(radians)
+
