@@ -1,112 +1,135 @@
-# using NumPy to perform basic arithmetic operations
-"""Calculator utilities using NumPy.
+# Light-weight calculator utilities without NumPy dependency.
+"""Calculator utilities using the Python standard library.
 
-Provides scalar/array-compatible wrappers for common math operations
-and a small command-line interface for quick usage and demos.
+This module intentionally avoids NumPy so simple scripts and the
+Tkinter GUI can run in minimal environments.
 """
 
-import numpy as np
+from math import factorial as _fact, sin as _sin, cos as _cos, tan as _tan, radians as _radians, degrees as _degrees
+from statistics import mean as _mean, median as _median, pstdev as _pstdev, pvariance as _pvariance
+
+
+def _is_sequence(x):
+    return isinstance(x, (list, tuple))
+
+
+def _apply_elementwise(a, b, op):
+    # broadcast scalar to sequence if necessary
+    if _is_sequence(a) and _is_sequence(b):
+        return [op(x, y) for x, y in zip(a, b)]
+    if _is_sequence(a):
+        return [op(x, b) for x in a]
+    if _is_sequence(b):
+        return [op(a, y) for y in b]
+    return op(a, b)
 
 
 def add(a, b):
-    return np.add(a, b)
+    return _apply_elementwise(a, b, lambda x, y: x + y)
 
 
 def subtract(a, b):
-    return np.subtract(a, b)
+    return _apply_elementwise(a, b, lambda x, y: x - y)
 
 
 def multiply(a, b):
-    return np.multiply(a, b)
+    return _apply_elementwise(a, b, lambda x, y: x * y)
 
 
 def divide(a, b):
-    return np.divide(a, b)
+    return _apply_elementwise(a, b, lambda x, y: x / y)
 
 
 def power(a, b):
-    return np.power(a, b)
+    return _apply_elementwise(a, b, lambda x, y: x ** y)
 
 
 def sqrt(a):
-    return np.sqrt(a)
+    return _apply_elementwise(a, None, lambda x, _: x ** 0.5)
 
 
 def log(a):
-    return np.log(a)
+    import math
+    return _apply_elementwise(a, None, lambda x, _: math.log(x))
 
 
 def exp(a):
-    return np.exp(a)
+    import math
+    return _apply_elementwise(a, None, lambda x, _: math.exp(x))
 
 
 def mean(a):
-    return np.mean(a)
+    if _is_sequence(a):
+        return _mean(a)
+    return a
 
 
 def median(a):
-    return np.median(a)
+    if _is_sequence(a):
+        return _median(a)
+    return a
 
 
 def std_dev(a):
-    return np.std(a)
+    if _is_sequence(a):
+        return _pstdev(a)
+    return 0
 
 
 def variance(a):
-    return np.var(a)
+    if _is_sequence(a):
+        return _pvariance(a)
+    return 0
 
 
 def factorial(n):
-    return np.math.factorial(n)
+    return _fact(int(n))
 
 
 def gcd(a, b):
-    return np.gcd(a, b)
+    import math
+    return math.gcd(int(a), int(b))
 
 
 def lcm(a, b):
-    # handle scalar ints or numpy ints
-    return abs(int(a) * int(b)) // int(np.gcd(a, b))
+    a_i = int(a)
+    b_i = int(b)
+    import math
+    return abs(a_i * b_i) // math.gcd(a_i, b_i)
 
 
 def sin(a):
-    return np.sin(a)
+    return _apply_elementwise(a, None, lambda x, _: _sin(x))
 
 
 def cos(a):
-    return np.cos(a)
+    return _apply_elementwise(a, None, lambda x, _: _cos(x))
 
 
 def tan(a):
-    return np.tan(a)
+    return _apply_elementwise(a, None, lambda x, _: _tan(x))
 
 
 def radians(deg):
-    return np.radians(deg)
+    return _apply_elementwise(deg, None, lambda x, _: _radians(x))
 
 
 def degrees(rad):
-    return np.degrees(rad)
+    return _apply_elementwise(rad, None, lambda x, _: _degrees(x))
 
 
 def _parse_value(s):
-    """Parse a string into a number or NumPy array.
-
-    - Comma-separated values -> NumPy array of floats when possible.
-    - Single numeric string -> int or float.
-    - If input already numeric/array, returns numpy array or value.
-    """
     if s is None:
         return None
-    if isinstance(s, (int, float, np.ndarray, list, tuple)):
-        return np.asarray(s)
+    if _is_sequence(s):
+        return list(s)
     if isinstance(s, str):
         if "," in s:
             parts = [p.strip() for p in s.split(",") if p.strip()]
             try:
-                return np.array([float(p) for p in parts])
+                return [float(p) for p in parts]
             except ValueError:
-                return np.array(parts)
+                return parts
         try:
             if "." in s:
                 return float(s)
@@ -118,18 +141,17 @@ def _parse_value(s):
 
 def _format_out(x):
     try:
-        if isinstance(x, np.ndarray):
-            return x.tolist()
-        # try converting to float if possible
+        if _is_sequence(x):
+            return list(x)
         return float(x)
     except Exception:
         return x
 
 
 def _demo():
-    print("Calculator demo using NumPy — examples:")
-    a = np.array([1, 2, 3])
-    b = np.array([4, 5, 6])
+    print("Calculator demo — examples:")
+    a = [1, 2, 3]
+    b = [4, 5, 6]
     print("a:", a)
     print("b:", b)
     print("add(a,b):", add(a, b))
