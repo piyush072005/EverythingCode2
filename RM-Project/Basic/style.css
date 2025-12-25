@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Roboto+Slab:wght@100..900&display=swap');
+.nav-title{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 10px;
+    position: fixed;
+    width: auto;
+    height: auto;
+    text-align: left;
+    font-family: 'Roboto Slab', serif;
+}
+.nav-logo {
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.nav-items {
+    margin-top: 10px;
+    margin-right: 15px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    position: inherit;
+    text-align: center;
+    width: auto;
+    height: auto;
+}
