@@ -129,6 +129,14 @@ nav {
     background: var(--emerald);
     color: #fff;
     box-shadow: 0 10px 30px rgba(10, 160, 110, 0.25);
+    text-decoration: none;
+}
+
+.btn:link,
+.btn:visited,
+.btn:hover,
+.btn:focus {
+    text-decoration: none;
 }
 
 .btn:hover {
@@ -146,6 +154,55 @@ nav {
 .btn.secondary:hover {
     border-color: var(--emerald);
     color: var(--emerald);
+}
+
+.bank-slider {
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    padding: 20px 0;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.bank-track {
+    display: flex;
+    gap: 40px;
+    animation: scroll 30s linear infinite;
+    width: fit-content;
+}
+
+.bank-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    height: 70px;
+    padding: 14px 20px;
+    border-radius: var(--radius-sm);
+    background: var(--sand);
+    border: 1px solid var(--border);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.bank-logo:hover {
+    background: #fff;
+    border-color: var(--emerald);
+    color: var(--emerald);
+    transform: translateY(-2px);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .hero {
