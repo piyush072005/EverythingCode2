@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now • Finance Moguls</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-bar">
+            <div class="nav-title">
+                <img src="logo-removebg-preview.png" alt="Finance Moguls Logo" class="nav-logo">
+                <span class="nav-title-text">Finance Moguls</span>
+            </div>
+            <div class="nav-items">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a class="btn secondary" href="login.html">Login</a>
+                <a class="btn" href="apply.html">Apply Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page">
+        <section class="hero" style="padding-top: 48px;">
+            <div>
+                <div class="eyebrow">Apply now</div>
+                <h1>Complete your Finance Moguls application.</h1>
+                <p>Share the basics and our underwriting team will tailor offers with transparent terms. Submitting this form will not impact your credit score.</p>
+                <div class="stat-row">
+                    <div class="stat">
+                        <strong>~8 min</strong>
+                        <span>average completion</span>
+                    </div>
+                    <div class="stat">
+                        <strong>24h</strong>
+                        <span>typical decision time</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-card" style="padding:0;">
+                <div style="padding:22px; border-bottom:1px solid var(--border);">
+                    <h3>Application summary</h3>
+                    <p style="color:#3a5264;">Fill out the details below. You can save and continue later from your login.</p>
+                </div>
+                <div style="padding:22px; display:grid; gap:14px;">
+                    <div class="chips">
+                        <span class="chip">No prepayment fees</span>
+                        <span class="chip">Soft pull only</span>
+                        <span class="chip">Bank-grade security</span>
+                    </div>
+                    <a class="btn secondary" href="contact.html" style="text-align:center;">Need a loan guide?</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section split">
+            <div class="card">
+                <h3>Personal / Business details</h3>
+                <form>
+                    <label for="full-name">Full name</label>
+                    <input id="full-name" type="text" placeholder="Aarav Sharma">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="you@example.com">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="tel" placeholder="+91 90000 00000">
+                    <label for="entity">Applying as</label>
+                    <select id="entity">
+                        <option>Individual</option>
+                        <option>Business</option>
+                    </select>
+                    <label for="business-name">Business name (if applicable)</label>
+                    <input id="business-name" type="text" placeholder="Mogul Ventures Pvt. Ltd.">
+                    <label for="industry">Industry</label>
+                    <select id="industry">
+                        <option>Services</option>
+                        <option>Manufacturing</option>
+                        <option>Technology</option>
+                        <option>Retail</option>
+                        <option>Other</option>
+                    </select>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Loan preferences</h3>
+                <form>
+                    <label for="loan-type">Loan type</label>
+                    <select id="loan-type">
+                        <option>Personal loan</option>
+                        <option>Small business</option>
+                        <option>Equipment financing</option>
+                        <option>Home improvement</option>
+                    </select>
+                    <label for="amount">Desired amount</label>
+                    <input id="amount" type="text" placeholder="₹10,00,000">
+                    <label for="timeline">Funding timeline</label>
+                    <select id="timeline">
+                        <option>As soon as possible</option>
+                        <option>Within 30 days</option>
+                        <option>1-3 months</option>
+                        <option>3-6 months</option>
+                    </select>
+                    <label for="use">Primary use of funds</label>
+                    <input id="use" type="text" placeholder="Working capital, expansion, equipment, etc.">
+                </form>
+            </div>
+        </section>
+
+        <section class="section split">
+            <div class="card">
+                <h3>Financial snapshot</h3>
+                <form>
+                    <label for="income">Monthly income / revenue</label>
+                    <input id="income" type="text" placeholder="₹4,00,000">
+                    <label for="credit-score">Estimated credit score</label>
+                    <select id="credit-score">
+                        <option>720+</option>
+                        <option>680-719</option>
+                        <option>620-679</option>
+                        <option>Below 620</option>
+                    </select>
+                    <label for="tenure">Preferred tenure</label>
+                    <select id="tenure">
+                        <option>6 - 12 months</option>
+                        <option>1 - 3 years</option>
+                        <option>3 - 5 years</option>
+                        <option>5+ years</option>
+                    </select>
+                    <label for="documents">Documents ready</label>
+                    <select id="documents">
+                        <option>Bank statements</option>
+                        <option>ITR / GST returns</option>
+                        <option>Financial statements</option>
+                        <option>All of the above</option>
+                    </select>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Review & submit</h3>
+                <div class="list">
+                    <ul>
+                        <li>Soft inquiry only for pre-approval</li>
+                        <li>Transparent APR, no prepayment penalties on eligible loans</li>
+                        <li>Encrypted uploads and identity verification</li>
+                    </ul>
+                </div>
+                <div style="display:grid; gap:10px; margin-top:14px;">
+                    <label style="display:flex; align-items:flex-start; gap:10px; color:#3a5264; font-weight:600;">
+                        <input type="checkbox" style="width:16px; height:16px; margin-top:4px;"> I confirm the information provided is accurate to the best of my knowledge.
+                    </label>
+                    <button class="btn" type="button">Submit application</button>
+                    <a class="btn secondary" href="login.html" style="text-align:center;">Save & continue later</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <strong>Finance Moguls</strong><br>
+                Loans designed for clarity, speed, and fairness.
+            </div>
+            <div>
+                <strong>Explore</strong><br>
+                Home · Services · About · Contact
+            </div>
+            <div>
+                <strong>Support</strong><br>
+                Reemamaggu100@gmail.com<br>
+                +91 93100 82447
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
