@@ -20,15 +20,166 @@
                 <a href="services.html">Services</a>
                 <a href="contact.html">Contact</a>
             </div>
+            <div class="nav-actions">
+                <button class="btn secondary">Login</button>
+                <button class="btn">Apply Now</button>
+            </div>
         </div>
     </nav>
-    <div class="body">
-        <h1>Welcome to Finance Moguls</h1>
-        <p>Your gateway to financial success and investment insights.</p>
-    </div>
+    <main class="page">
+        <section class="hero">
+            <div>
+                <div class="eyebrow">Loan programs</div>
+                <h1>Funding options tailored to your cash flow and growth plans.</h1>
+                <p>Choose from personal, business, and equipment financing with transparent APRs, simple documentation, and same-day decisions for qualified borrowers.</p>
+                <div style="margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap;">
+                    <button class="btn">Start application</button>
+                    <button class="btn secondary">Schedule a consult</button>
+                </div>
+            </div>
+            <div class="hero-card">
+                <h3>Need a quick guide?</h3>
+                <p style="color: #3a5264;">Tell us what you need and we will suggest the best program.</p>
+                <form>
+                    <label for="use">Primary use of funds</label>
+                    <select id="use">
+                        <option>Working capital</option>
+                        <option>Debt consolidation</option>
+                        <option>Equipment purchase</option>
+                        <option>Home improvement</option>
+                    </select>
+                    <label for="revenue">Annual revenue (if business)</label>
+                    <input id="revenue" type="text" placeholder="₹250,000">
+                    <label for="credit">Estimated credit score</label>
+                    <select id="credit">
+                        <option>720+</option>
+                        <option>680-719</option>
+                        <option>620-679</option>
+                        <option>Below 620</option>
+                    </select>
+                    <button class="btn" type="button">See recommended option</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="section">
+            <header>
+                <h2>Loan catalog</h2>
+                <span class="badge">Core programs</span>
+            </header>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Program</th>
+                        <th>Amounts</th>
+                        <th>Terms</th>
+                        <th>Ideal for</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Personal loan</td>
+                        <td>₹5k - ₹100k</td>
+                        <td>2 - 7 years, fixed APR</td>
+                        <td>Consolidation, medical, major purchases</td>
+                    </tr>
+                    <tr>
+                        <td>Small business</td>
+                        <td>₹25k - ₹500k</td>
+                        <td>6 - 36 months, flexible</td>
+                        <td>Working capital, inventory, payroll bridge</td>
+                    </tr>
+                    <tr>
+                        <td>Equipment financing</td>
+                        <td>₹10k - ₹750k</td>
+                        <td>Up to 60 months</td>
+                        <td>Fleet, machinery, tech upgrades</td>
+                    </tr>
+                    <tr>
+                        <td>Home improvement</td>
+                        <td>₹15k - ₹200k</td>
+                        <td>5 - 15 years, fixed</td>
+                        <td>Renovations, energy upgrades</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section split">
+            <div class="card">
+                <h3>Documentation checklist</h3>
+                <div class="list">
+                    <ul>
+                        <li>Government ID and address verification</li>
+                        <li>Income proof (pay stubs or bank connections)</li>
+                        <li>Business financials for SMB loans</li>
+                        <li>Equipment quotes for financing requests</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Eligibility signals</h3>
+                <p>We assess stability, affordability, and purpose-fit to offer you the best possible terms.</p>
+                <div class="chips">
+                    <span class="chip">Steady income</span>
+                    <span class="chip">Responsible credit</span>
+                    <span class="chip">Clear use of funds</span>
+                    <span class="chip">Business traction</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <header>
+                <h2>Underwriting process</h2>
+                <span class="badge">Built for speed</span>
+            </header>
+            <ol class="steps">
+                <li>Soft credit pull and income verification to provide pre-approval.</li>
+                <li>Document review by our underwriting team and lender partner match.</li>
+                <li>Offer presentation with APR, fees, and repayment schedule spelled out.</li>
+                <li>eSign and funding to your bank account.</li>
+            </ol>
+        </section>
+
+        <section class="section">
+            <header>
+                <h2>Service guarantees</h2>
+                <span class="badge">Confidence built-in</span>
+            </header>
+            <div class="grid">
+                <div class="card">
+                    <h3>Rate clarity</h3>
+                    <p>You see APR ranges before uploading documents, and final offers always match what we disclose.</p>
+                </div>
+                <div class="card">
+                    <h3>Dedicated loan guide</h3>
+                    <p>A real human tracks your file, answers questions, and advocates for better terms when possible.</p>
+                </div>
+                <div class="card">
+                    <h3>Security-first</h3>
+                    <p>Encrypted uploads and strict access controls keep your data protected at every step.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        &copy; 2024 Finance Moguls. All rights reserved.
+        <div class="footer-grid">
+            <div>
+                <strong>Finance Moguls</strong><br>
+                Loans designed for clarity, speed, and fairness.
+            </div>
+            <div>
+                <strong>Explore</strong><br>
+                Home · Services · About · Contact
+            </div>
+            <div>
+                <strong>Support</strong><br>
+                Reemamaggu100@gmail.com<br>
+                +91 93100 82447
+            </div>
+        </div>
     </footer>   
 </body>
 </html>
