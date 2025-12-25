@@ -1,29 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Roboto+Slab:wght@100..900&display=swap');
-.nav-title{
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+body {
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    background-color: #f8f8f8;
+}
+
+.nav-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.nav-title-text {
     font-size: 20px;
     font-weight: bold;
     color: #000000;
-    margin-bottom: 10px;
-    position: fixed;
-    width: auto;
-    height: auto;
-    text-align: left;
-    font-family: 'Roboto Slab', serif;
 }
+
 .nav-logo {
     width: 100px;
     height: 100px;
     vertical-align: middle;
-    margin-right: 10px;
 }
-.nav-items a{
+
+.nav-items {
+    display: flex;
+    align-items: center;
+}
+
+.nav-items a {
     margin-left: 15px;
     margin-right: 15px;
     text-decoration: none;
     color: #000000;
     font-weight: bold;
-    position: inherit;
+}
+
+.nav-items a:hover {
+    color: #555555;
+}
+
+.body {
     text-align: center;
-    width: auto;
-    height: auto;
+    padding: 16px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 600px) {
+    .nav-logo {
+        width: 64px;
+        height: 64px;
+    }
+    .nav-items a {
+        margin: 8px;
+    }
 }
