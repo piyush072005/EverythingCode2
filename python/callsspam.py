@@ -12,8 +12,8 @@ CALLER_NUMBER = "+1 225 307 3216"
 DEFAULT_REGION = "US"
 
 # Set Twilio credentials via environment variables.
-TWILIO_ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID", "AC9245b1796ff699ac97709540ac3413ce")
-TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN", "51a980f2135fafac16ce1da23128b6fd")
+#TWILIO_ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID", "AC9245b1796ff699ac97709540ac3413ce")
+#TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN", "51a980f2135fafac16ce1da23128b6fd")
 
 
 def parse_number(raw_number, default_region):
