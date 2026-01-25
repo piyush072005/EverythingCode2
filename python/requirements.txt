@@ -2,3 +2,5 @@ pandas
 numpy
 phonenumbers
 twilio
+Pillow
+rembg
