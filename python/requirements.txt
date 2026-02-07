@@ -3,4 +3,4 @@ numpy
 phonenumbers
 twilio
 Pillow
-rembg
+rembgFlask

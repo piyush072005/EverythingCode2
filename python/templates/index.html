@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .status {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: #667eea;
+            font-weight: bold;
+            height: 30px;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 5px;
+            margin: 30px auto;
+            background: #667eea;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .cell {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border: none;
+            font-size: 2.5em;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            color: #667eea;
+        }
+
+        .cell:hover {
+            background: #f0f0f0;
+            transform: scale(1.05);
+        }
+
+        .cell.x {
+            color: #ff6b6b;
+        }
+
+        .cell.o {
+            color: #4ecdc4;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .reset-btn {
+            background: #667eea;
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .winner-message {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+            font-weight: bold;
+            animation: pulse 0.5s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .draw-message {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #ffa500;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Tic Tac Toe</h1>
+        <div class="status">
+            <div id="winner-display"></div>
+            <div id="current-player">Player X's Turn</div>
+        </div>
+        <div class="board" id="board">
+            <button class="cell" data-index="0"></button>
+            <button class="cell" data-index="1"></button>
+            <button class="cell" data-index="2"></button>
+            <button class="cell" data-index="3"></button>
+            <button class="cell" data-index="4"></button>
+            <button class="cell" data-index="5"></button>
+            <button class="cell" data-index="6"></button>
+            <button class="cell" data-index="7"></button>
+            <button class="cell" data-index="8"></button>
+        </div>
+        <div class="buttons">
+            <button class="reset-btn" onclick="resetGame()">New Game</button>
+        </div>
+    </div>
+
+    <script>
+        const cells = document.querySelectorAll('.cell');
+        const currentPlayerDisplay = document.getElementById('current-player');
+        const winnerDisplay = document.getElementById('winner-display');
+
+        // Load initial game state
+        async function loadGame() {
+            const response = await fetch('/api/game');
+            const gameState = await response.json();
+            updateBoard(gameState);
+        }
+
+        // Update board display
+        function updateBoard(gameState) {
+            gameState.board.forEach((cell, index) => {
+                const cellElement = document.querySelector(`[data-index="${index}"]`);
+                cellElement.textContent = cell;
+                cellElement.classList.remove('x', 'o');
+                if (cell === 'X') {
+                    cellElement.classList.add('x');
+                } else if (cell === 'O') {
+                    cellElement.classList.add('o');
+                }
+            });
+
+            // Update status
+            winnerDisplay.textContent = '';
+            if (gameState.game_over) {
+                if (gameState.winner) {
+                    winnerDisplay.innerHTML = `<div class="winner-message">🎉 Player ${gameState.winner} Wins! 🎉</div>`;
+                    currentPlayerDisplay.textContent = '';
+                } else {
+                    winnerDisplay.innerHTML = `<div class="draw-message">It's a Draw!</div>`;
+                    currentPlayerDisplay.textContent = '';
+                }
+            } else {
+                currentPlayerDisplay.textContent = `Player ${gameState.current_player}'s Turn`;
+            }
+        }
+
+        // Handle cell click
+        async function handleCellClick(event) {
+            const index = event.target.getAttribute('data-index');
+            
+            const response = await fetch('/api/move', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ position: parseInt(index) })
+            });
+
+            if (response.ok) {
+                const gameState = await response.json();
+                updateBoard(gameState);
+            }
+        }
+
+        // Reset game
+        async function resetGame() {
+            const response = await fetch('/api/reset', {
+                method: 'POST'
+            });
+            const gameState = await response.json();
+            updateBoard(gameState);
+        }
+
+        // Add click listeners to cells
+        cells.forEach(cell => {
+            cell.addEventListener('click', handleCellClick);
+        });
+
+        // Load game on page load
+        loadGame();
+    </script>
+</body>
+</html>
